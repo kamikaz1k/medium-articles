@@ -1,0 +1,36 @@
+<div ng-form="phoneNumberForm">
+    <!-- Step 1. -->
+    <span ng-if="countryCode === 'CA' || countryCode === 'US'">
+        <span>+</span>
+        <input type="text"
+            ng-model="phone.countryCode"
+            ng-disabled="true">
+        <span>(</span>
+        <input type="text"
+            ng-model="phone.areaCode"
+            ng-pattern="/^[0-9]{3}$/"
+            ng-required="required"
+            ng-change="validateInput('area')">
+        <span>)</span>
+        <input type="text"
+            id="phoneOne"
+            ng-model="phone.phoneOne"
+            ng-pattern="/^[0-9]{3}$/"
+            ng-required="required"
+            ng-change="validateInput('one')">
+        <span>-</span>
+        <input type="text"
+            id="phoneTwo"
+            ng-model="phone.phoneTwo"
+            ng-pattern="/^[0-9]{4}$/"
+            ng-required="required"
+            ng-change="validateInput()">
+    </span>
+    <span ng-if="countryCode !== 'CA' && countryCode !== 'US'">
+        <input type="text"
+            ng-model="phone.international"
+            ng-pattern="/^[0-9]+$/"
+            ng-required="required"
+            ng-change="validateInput()">
+    </span>
+</div>
