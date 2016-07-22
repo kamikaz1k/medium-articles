@@ -24,6 +24,8 @@ app.directive("phoneNumber", function () {
 
             // Populate internal model with data from parent model
             if (scope.parentModel) {
+                // The splitModel function takes the parentModel value and
+                // splits it up to populate the internal data model
                 splitModel();
             }
 
@@ -34,6 +36,8 @@ app.directive("phoneNumber", function () {
             });
 
             // Step 3.
+            // Run the concatenation logic to update the parent model
+            // and update the ngModelCtrl's validPhone error flag
             scope.validateInput = validateInput;
 
             function validateInput(fieldId) {
@@ -91,6 +95,8 @@ app.directive("phoneNumber", function () {
 
             }
 
+            // Function takes the parentModel value and splits it up
+            // to populate the internal data model
             function splitModel () {
                 // If it is a US/CA country then update the dat 
                 if (/US|CA/.test(scope.countryCode) && scope.parentModel) {
